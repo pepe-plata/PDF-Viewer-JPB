@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="theme-color" content="#1a73e8">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Visor PDF</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Barra superior -->
+  <header id="toolbar">
+    <button id="btnOpen" class="tool-btn" title="Abrir PDF">📂</button>
+    <button id="btnZoomOut" class="tool-btn" title="Reducir">➖</button>
+    <span id="zoomLevel">100%</span>
+    <button id="btnZoomIn" class="tool-btn" title="Aumentar">➕</button>
+    <button id="btnFit" class="tool-btn" title="Ajustar">⤢</button>
+    <button id="btnRotate" class="tool-btn" title="Rotar">🔄</button>
+    <div class="spacer"></div>
+    <span id="pageIndicator">0 / 0</span>
+    <button id="btnPrev" class="tool-btn" title="Anterior">◀</button>
+    <button id="btnNext" class="tool-btn" title="Siguiente">▶</button>
+    <button id="btnSearch" class="tool-btn" title="Buscar">🔍</button>
+    <button id="btnExport" class="tool-btn" title="Exportar PDF">💾</button>
+    <button id="btnMore" class="tool-btn" title="Más">⋮</button>
+  </header>
+
+  <!-- Menú contextual flotante (selección) -->
+  <div id="selectionMenu" class="hidden">
+    <button data-action="copy">📋 Copiar</button>
+    <button data-action="highlight">🖍 Resaltar</button>
+    <button data-action="export-selection">📤 Exportar selección</button>
+    <button data-action="close">✖</button>
+  </div>
+
+  <!-- Visor -->
+  <main id="viewerContainer">
+    <div id="viewer"></div>
+    <div id="dropZone">
+      <p>Arrastra un PDF aquí o pulsa 📂</p>
+    </div>
+  </main>
+
+  <!-- Panel de búsqueda -->
+  <aside id="searchPanel" class="hidden">
+    <input id="searchInput" type="text" placeholder="Buscar en el PDF...">
+    <button id="searchPrev">↑</button>
+    <button id="searchNext">↓</button>
+    <span id="searchCount">0/0</span>
+    <button id="searchClose">✖</button>
+  </aside>
+
+  <!-- Menú "Más" -->
+  <div id="moreMenu" class="hidden">
+    <button id="menuExportAll">💾 Exportar PDF completo</button>
+    <button id="menuExportPages">📄 Exportar páginas seleccionadas</button>
+    <button id="menuPrint">🖨 Imprimir</button>
+    <button id="menuFitWidth">↔ Ajustar ancho</button>
+    <button id="menuFitPage">⬜ Ajustar página</button>
+    <button id="menuTheme">🌙 Modo oscuro</button>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="hidden"></div>
+
+  <input type="file" id="fileInput" accept="application/pdf" hidden>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
